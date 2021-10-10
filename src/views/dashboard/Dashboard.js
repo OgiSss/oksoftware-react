@@ -6,9 +6,9 @@ import Container from '@material-ui/core/Container';
 import Copyright from 'components/UI/Copyright';
 import Bar from 'components/UI/Header';
 import { Route, Switch } from 'react-router';
-import Context from '../context/Context';
+import Context from '../Context/Context';
 import DashboardContent from './DashboardContent';
-import Uncontrolled from '../../views/uncontrolled/Uncontrolled';
+import Uncontrolled from '../../views/Uncontrolled/Uncontrolled';
 
 const useStyles = makeStyles((theme) => ({
     root: {

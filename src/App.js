@@ -1,14 +1,12 @@
 import './App.css';
-import Dashboard from './views/dashboard/Dashboard';
 import React, { useEffect } from 'react';
-
 import { Route, Switch, useHistory } from "react-router-dom";
-import SignIn from './views/auth/SignIn';
-import SignUp from './views/auth/SignUp';
-import AuthRoute from './components/auth/AuthRoute';
+import SignIn from './views/Auth/SignIn';
+import SignUp from './views/Auth/SignUp';
 import { useSelector } from 'react-redux';
-import ForgotPassword from 'views/auth/ForgotPassword';
-
+import ForgotPassword from 'views/Auth/ForgotPassword';
+import Dashboard from 'views/Dashboard/Dashboard';
+import AuthRoute from 'views/Auth/AuthRoute';
 
 function App() {
   const isLogin = useSelector((state) => state.auth.isLogin);

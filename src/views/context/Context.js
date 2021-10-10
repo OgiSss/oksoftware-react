@@ -6,7 +6,6 @@ import EmailSubscriptionForm from './EmailSubscriptionForm';
 import SubscriptionList from './SubscriptionLIst';
 import SubscriptionListContext from './store/subscription-context';
 
-
 const useStyles = makeStyles((theme) => ({
     paper: {
         padding: theme.spacing(2),
