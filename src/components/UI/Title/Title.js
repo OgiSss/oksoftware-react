@@ -3,7 +3,7 @@ import React from 'react';
 
 const Title = (props) => {
     return (
-        <Typography variant="h4" component="h4">
+        <Typography variant="h4" component="h4" style={{ 'padding': props.spacing + 'px' }}>
             {props.children}
         </Typography>
     )

@@ -9,6 +9,8 @@ import { Route, Switch } from 'react-router';
 import Context from '../Context/Context';
 import DashboardContent from './DashboardContent';
 import Uncontrolled from '../../views/Uncontrolled/Uncontrolled';
+import Styles from 'views/Styles/Styles';
+import { Portal } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -48,6 +50,8 @@ export default function Dashboard() {
                     <Switch>
                         <Route path="/context" component={Context} />
                         <Route path="/uncontrolled" component={Uncontrolled} />
+                        <Route path="/styles" component={Styles} />
+                        <Route path="/portal" component={Portal} />
                         <Route path="/" component={DashboardContent} />
                     </Switch>
                     <Box pt={4}>

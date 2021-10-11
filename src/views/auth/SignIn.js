@@ -54,7 +54,6 @@ export default function SignIn() {
         event.preventDefault();
 
         dispatch(signIn(formValues));
-        console.log(formValues);
     }
 
     return (

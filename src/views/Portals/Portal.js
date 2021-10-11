@@ -4,7 +4,7 @@ import React from 'react';
 import ControlledComp from './UncontrolledComp';
 import UncontrolledComp from './ControlledComp';
 
-const Uncontrolled = () => {
+const Portal = () => {
     return (
         <React.Fragment>
             <Grid container spacing={3}>
@@ -25,4 +25,4 @@ const Uncontrolled = () => {
     )
 }
 
-export default Uncontrolled;
+export default Portal;

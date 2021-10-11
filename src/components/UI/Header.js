@@ -8,6 +8,10 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import { makeStyles, Typography } from "@material-ui/core";
 import CustomDrawer from "./Drawer/CustomDrawer";
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { useHistory } from "react-router";
+import { useDispatch } from "react-redux";
+import { signOut } from "store/authSlice";
 
 const drawerWidth = 240;
 
@@ -72,6 +76,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Bar = () => {
+    const history = useHistory();
+    const dispatch = useDispatch();
+
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
 
@@ -81,6 +88,12 @@ const Bar = () => {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
+    const signOutHandler = () => {
+        localStorage.removeItem('auth');
+        dispatch(signOut());
+        history.push('sign-in');
+    }
 
     return (
         <Fragment>
@@ -102,6 +115,9 @@ const Bar = () => {
                         <Badge badgeContent={4} color="secondary">
                             <NotificationsIcon />
                         </Badge>
+                    </IconButton>
+                    <IconButton color="inherit" onClick={signOutHandler}>
+                        <ExitToAppIcon />
                     </IconButton>
                 </Toolbar>
             </AppBar>
