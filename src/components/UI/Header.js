@@ -122,7 +122,7 @@ const Bar = () => {
                 </Toolbar>
             </AppBar>
 
-            <CustomDrawer onhandleDrawerClose={handleDrawerClose} open={open}></CustomDrawer>
+            <CustomDrawer onHandleDrawerClose={handleDrawerClose} open={open}></CustomDrawer>
 
         </Fragment>
     )

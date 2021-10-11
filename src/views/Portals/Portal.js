@@ -1,27 +1,36 @@
-import { Grid, Paper } from '@material-ui/core';
-import Title from 'components/UI/Title/Title';
-import React from 'react';
-import ControlledComp from './UncontrolledComp';
-import UncontrolledComp from './ControlledComp';
+import React, { Fragment, useState } from 'react';
+import ReactDOM from 'react-dom';
+import Modal from './Backdrop/Modal';
+import styled from 'styled-components';
+
+const Button = styled.button`
+  background-color: #3f51b5; /* Green */
+  border: none;
+  color: white;
+  padding: 11px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+`;
 
 const Portal = () => {
+    const [openModal, setOpenModal] = useState(false);
+
+    const closeHandler = () => {
+        setOpenModal(false);
+    }
+
+    const openHandler = () => {
+        setOpenModal(true);
+    }
+
     return (
-        <React.Fragment>
-            <Grid container spacing={3}>
-                <Grid item xs={12} md={6} lg={6}>
-                    <Paper >
-                        <Title spacing={8}>Uncontrolled</Title>
-                        <ControlledComp />
-                    </Paper>
-                </Grid>
-                <Grid item xs={12} md={6}>
-                    <Paper >
-                        <Title spacing={8}>Controlled</Title>
-                        <UncontrolledComp />
-                    </Paper>
-                </Grid>
-            </Grid>
-        </React.Fragment>
+        <Fragment>
+            {openModal && (ReactDOM.createPortal(<Modal onClose={closeHandler} />, document.getElementById('modal')))}
+            <Button type="submit" onClick={openHandler}>Open modal</Button>
+        </Fragment>
     )
 }
 

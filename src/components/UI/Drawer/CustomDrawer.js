@@ -75,7 +75,7 @@ const CustomDrawer = (props) => {
         <Drawer
             variant="permanent"
             classes={{
-                paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+                paper: clsx(classes.drawerPaper, !props.open && classes.drawerPaperClose),
             }}
             open={props.open}>
             <div className={classes.toolbarIcon}>

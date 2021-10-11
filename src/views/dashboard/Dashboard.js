@@ -10,7 +10,8 @@ import Context from '../Context/Context';
 import DashboardContent from './DashboardContent';
 import Uncontrolled from '../../views/Uncontrolled/Uncontrolled';
 import Styles from 'views/Styles/Styles';
-import { Portal } from '@material-ui/core';
+import Portal from 'views/Portals/Portal';
+import Memo from 'views/Memo/Memo';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -52,6 +53,7 @@ export default function Dashboard() {
                         <Route path="/uncontrolled" component={Uncontrolled} />
                         <Route path="/styles" component={Styles} />
                         <Route path="/portal" component={Portal} />
+                        <Route path="/memo" component={Memo} />
                         <Route path="/" component={DashboardContent} />
                     </Switch>
                     <Box pt={4}>

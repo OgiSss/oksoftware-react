@@ -37,11 +37,17 @@ export const mainListItems = (
             </ListItemIcon>
             <ListItemText primary="Styles" />
         </ListItem>
-        <ListItem button>
+        <ListItem button component={Link} to="/portal">
             <ListItemIcon>
                 <LayersIcon />
             </ListItemIcon>
-            <ListItemText primary="Integrations" />
+            <ListItemText primary="Portal" />
+        </ListItem>
+        <ListItem button component={Link} to="/Memo">
+            <ListItemIcon>
+                <LayersIcon />
+            </ListItemIcon>
+            <ListItemText primary="Memo" />
         </ListItem>
     </React.Fragment>
 );

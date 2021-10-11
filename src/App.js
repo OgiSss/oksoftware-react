@@ -6,7 +6,7 @@ import SignUp from './views/Auth/SignUp';
 import { useSelector } from 'react-redux';
 import ForgotPassword from 'views/Auth/ForgotPassword';
 import Dashboard from 'views/Dashboard/Dashboard';
-import AuthRoute from 'views/Auth/AuthRoute';
+import AuthRoute from 'components/auth/AuthRoute';
 
 function App() {
   const isLogin = useSelector((state) => state.auth.isLogin);
