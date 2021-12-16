@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -14,9 +14,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Copyright from '../../components/UI/Copyright/Copyright';
 import useForm from '../../hooks/useForm';
-import { signIn } from '../../store/authSlice';
-import { useDispatch } from 'react-redux';
-import { Link as LinkRouter } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link as LinkRouter, useHistory } from 'react-router-dom';
+import { clearState, loginUser, userSelector } from 'store/userSlice';
+import { Snackbar } from '@material-ui/core';
+import { Alert } from '@material-ui/lab';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -47,13 +49,48 @@ const initialFormValues = {
 export default function SignIn() {
     const classes = useStyles();
     const dispatch = useDispatch();
+    const history = useHistory();
 
-    const { formValues, handleInputChange } = useForm(initialFormValues)
+    const { formValues, handleInputChange } = useForm(initialFormValues);
+    const [openSnackbar, setOpenSnackbar] = React.useState(false);
+
+    const { isSuccess, isError, errorMessage } = useSelector(userSelector);
 
     const formHandler = (event) => {
         event.preventDefault();
 
-        dispatch(signIn(formValues));
+        dispatch(loginUser(formValues));
+    }
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpenSnackbar(false);
+    };
+
+    useEffect(() => {
+        return () => {
+            dispatch(clearState());
+        };
+    }, []);
+
+    useEffect(() => {
+        if (isSuccess) {
+            dispatch(clearState());
+            history.push('/');
+        }
+
+        if (isError) {
+            setOpenSnackbar(true);
+        }
+    }, [isSuccess, isError]);
+
+    const errors = [];
+
+    if (errorMessage) {
+        errorMessage?.forEach((item) => item.messages?.forEach((element) => errors.push(element.message)));
     }
 
     return (
@@ -126,6 +163,11 @@ export default function SignIn() {
                     </Grid>
                 </form>
             </div>
+            <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="error">
+                    {errors?.join(' ')}
+                </Alert>
+            </Snackbar>
             <Box mt={8}>
                 <Copyright />
             </Box>

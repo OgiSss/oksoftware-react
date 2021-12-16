@@ -12,9 +12,10 @@ const Memo = () => {
     return (
         <div style={{ border: '1px solid green', padding: 10 }}>
             <MemoChild title={title}></MemoChild>
+            <MemoChild title={false}></MemoChild>
             <Button onClick={changeTitle} >Change title</Button>
         </div>
     )
 }
 
-export default Memo
+export default Memo;

@@ -9,7 +9,7 @@ import Dashboard from 'views/Dashboard/Dashboard';
 import AuthRoute from 'components/auth/AuthRoute';
 
 function App() {
-  const isLogin = useSelector((state) => state.auth.isLogin);
+  const isLogin = useSelector((state) => state.user.isSuccess);
   let history = useHistory();
 
   useEffect(() => {

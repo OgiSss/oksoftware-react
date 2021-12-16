@@ -17,7 +17,7 @@ module.exports = {
   },
   plugins: ['react'],
   extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
+    // 'eslint:recommended',
+    // 'plugin:react/recommended',
   ],
 };

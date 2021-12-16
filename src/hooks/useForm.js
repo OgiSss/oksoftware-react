@@ -6,8 +6,14 @@ export default function useForm(initialFormValues) {
 
     const handleInputChange = (e) => {
         const { name, value, checked } = e.target;
-        const inputValue = value || checked;
-        setFormValues((prevState) => ({ ...prevState, [name]: inputValue }))
+
+        if (e.target.type === 'checkbox') {
+            const inputValue = checked;
+            setFormValues((prevState) => ({ ...prevState, [name]: inputValue }))
+        } else {
+            const inputValue = value;
+            setFormValues((prevState) => ({ ...prevState, [name]: inputValue }))
+        }
     }
 
     return {

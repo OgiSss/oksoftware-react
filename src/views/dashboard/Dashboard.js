@@ -12,6 +12,7 @@ import Uncontrolled from '../../views/Uncontrolled/Uncontrolled';
 import Styles from 'views/Styles/Styles';
 import Portal from 'views/Portals/Portal';
 import Memo from 'views/Memo/Memo';
+import ReduxComp from 'views/ReduxComp/ReduxComp';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -26,16 +27,7 @@ const useStyles = makeStyles((theme) => ({
     container: {
         paddingTop: theme.spacing(4),
         paddingBottom: theme.spacing(4),
-    },
-    paper: {
-        padding: theme.spacing(2),
-        display: 'flex',
-        overflow: 'auto',
-        flexDirection: 'column',
-    },
-    fixedHeight: {
-        height: 240,
-    },
+    }
 }));
 
 export default function Dashboard() {
@@ -54,6 +46,7 @@ export default function Dashboard() {
                         <Route path="/styles" component={Styles} />
                         <Route path="/portal" component={Portal} />
                         <Route path="/memo" component={Memo} />
+                        <Route path="/redux" component={ReduxComp} />
                         <Route path="/" component={DashboardContent} />
                     </Switch>
                     <Box pt={4}>

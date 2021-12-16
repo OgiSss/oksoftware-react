@@ -11,7 +11,7 @@ import CustomDrawer from "./Drawer/CustomDrawer";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
-import { signOut } from "store/authSlice";
+import { signOut } from "store/userSlice";
 
 const drawerWidth = 240;
 
@@ -90,7 +90,7 @@ const Bar = () => {
     };
 
     const signOutHandler = () => {
-        localStorage.removeItem('auth');
+        localStorage.removeItem('token');
         dispatch(signOut());
         history.push('sign-in');
     }

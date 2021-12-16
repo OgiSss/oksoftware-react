@@ -9,4 +9,4 @@ const MemoChild = (props) => {
     )
 }
 
-export default React.memo(MemoChild);
+export default React.memo(MemoChild)

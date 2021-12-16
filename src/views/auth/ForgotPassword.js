@@ -8,7 +8,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import useForm from '../../hooks/useForm';
-import { signIn } from '../../store/authSlice';
 import { useDispatch } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
