@@ -15,7 +15,7 @@ export const loginUser = createAsyncThunk(
     async ({ email, password }, thunkAPI) => {
         try {
             const response = await fetch(
-                "http://localhost:1337/auth/local",
+                "http://localhost:1337/api/auth/local",
                 {
                     method: "POST",
                     headers: {
@@ -36,7 +36,6 @@ export const loginUser = createAsyncThunk(
                 return thunkAPI.rejectWithValue(data)
             }
         } catch (e) {
-            console.log("Error", e.response.data)
             thunkAPI.rejectWithValue(e.response.data)
         }
     }
@@ -51,6 +50,9 @@ export const userSlice = createSlice({
             state.isError = false;
             state.errorMessage = "";
         },
+        clearError: (state) => {
+            state.isError = false;
+        },
         signOut: (state) => {
             state = initialState;
             return state;
@@ -64,20 +66,20 @@ export const userSlice = createSlice({
             state.isSuccess = true;
             return state;
         },
-        [loginUser.rejected]: (state, { payload }) => {
+        [loginUser.rejected]: (state, { error }) => {
             state.isFetching = false;
             state.isError = true;
-            state.errorMessage = payload.message;
+            state.errorMessage = error?.message ?? 'Error';
         },
         [loginUser.pending]: (state) => {
             state.isFetching = true;
         },
     },
 })
+
 export const userSelector = state => state.user
 
-
 // Action creators are generated for each case reducer function
-export const { clearState, signOut } = userSlice.actions;
+export const { clearState, signOut, clearError } = userSlice.actions;
 
 export default userSlice.reducer;

@@ -71,11 +71,14 @@ const ReduxComp = () => {
             </form>
         </div>
     );
+    const nodeRef = React.useRef(null);
+
 
     return (
         <Fragment>
             <div className={classes.buttonWrapper}>
                 <Modal open={openModal}
+                    disableStrictModeCompat
                     onClose={closeHandler}
                     className={classes.modal}
                     closeAfterTransition
